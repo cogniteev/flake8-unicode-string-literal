@@ -8,6 +8,7 @@ with open('unicode_string_literal.py') as istr:
 
 setup(
     name='unicode-string-literal',
+    description='Flake8 String Literal Enforcer Extension',
     version=version,
     install_requires=[
         'setuptools',

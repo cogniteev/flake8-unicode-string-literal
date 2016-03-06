@@ -1,4 +1,4 @@
-# Flake8 String Literal Enforcer
+# Flake8 String Literal Enforcer Extension
 
 This Python module provide [Flake8](http://flake8.readthedocs.org/)
 with an extension that hunt down operations on string literal that may
@@ -12,8 +12,8 @@ pip install unicode-string-literal
 
 # Usage
 
-There is nothing to do to take benefits of this extensions. As soon as
-it is installed, Flake8 will take it into account.
+There is nothing to do to take benefits of this extension once it
+has been installed. Flake8 will detect it automatically.
 
 # Raised errors
 
