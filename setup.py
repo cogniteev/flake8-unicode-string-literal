@@ -16,7 +16,7 @@ setup(
     author='Cogniteev',
     author_email='tech@cogniteev.com',
     url='https://github.com/cogniteev/flake8-unicode-string-literal.git',
-    download_url='https://github.com/cogniteev/flake8-unicode-string-literal/tarball/' + version,
+    download_url='https://github.com/cogniteev/flake8-unicode-string-literal/tarball/v' + version,
     zip_safe=False,
     license='Apache license 2.0',
     keywords='flake8 unicode string',
