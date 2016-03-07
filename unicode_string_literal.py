@@ -10,6 +10,7 @@ __version__ = "1.0"
 class UnicodeStringLiteral(object):
     name = "unicode-string-literal"
     version = __version__
+    forbidden_str_methods = {'format', }
     W742 = 'W742 Usage of non-unicode string literal: {node.s!r}'
     W743 = u'W743 Unsafe operation on str, should use unicode: {node.s!r}'
 
@@ -45,7 +46,8 @@ class UnicodeStringLiteral(object):
                     yield node.lineno, node.col_offset, err, type(self)
         elif isinstance(node, ast.Call):
             if isinstance(node.func, ast.Attribute):
-                if isinstance(node.func.value, ast.Str):
-                    if not isinstance(node.func.value.s, unicode):
-                        err = self.W743.format(node=node.func.value)
-                        yield node.lineno, node.col_offset, err, type(self)
+                if node.func.attr in self.forbidden_str_methods:
+                    if isinstance(node.func.value, ast.Str):
+                        if not isinstance(node.func.value.s, unicode):
+                            err = self.W743.format(node=node.func.value)
+                            yield node.lineno, node.col_offset, err, type(self)
