@@ -21,8 +21,8 @@ class UnicodeStringLiteral(object):
     def add_options(cls, parser):
         parser.add_option('--utter-unicode-string-literals',
                           action='store_true',
+                          parse_from_config=True,
                           help="Expect all literal strings to be unicode")
-        parser.config_options.append('utter-unicode-string-literals')
 
     @classmethod
     def parse_options(cls, options):
