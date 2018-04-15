@@ -6,6 +6,8 @@ except ImportError:
 
 __version__ = "1.1"
 
+unicode_type = type(u'')
+
 
 class UnicodeStringLiteral(object):
     name = "unicode-string-literal"
@@ -41,13 +43,13 @@ class UnicodeStringLiteral(object):
     def visit_node(self, node):
         if self.all_strings:
             if isinstance(node, ast.Str):
-                if not isinstance(node.s, unicode):
+                if not isinstance(node.s, unicode_type):
                     err = self.W742.format(node=node)
                     yield node.lineno, node.col_offset, err, type(self)
         elif isinstance(node, ast.Call):
             if isinstance(node.func, ast.Attribute):
                 if node.func.attr in self.forbidden_str_methods:
                     if isinstance(node.func.value, ast.Str):
-                        if not isinstance(node.func.value.s, unicode):
+                        if not isinstance(node.func.value.s, unicode_type):
                             err = self.W743.format(node=node.func.value)
                             yield node.lineno, node.col_offset, err, type(self)
